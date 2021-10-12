@@ -19,6 +19,7 @@ services:
 
 env:
   global:
+   - PYTHONWARNINGS="ignore::DeprecationWarning"
    - CLOUD_SQL_DATABASE_NAME="playlist"
    - CLOUD_SQL_PASSWORD="123456"
    - CLOUD_SQL_USERNAME="playuser"
