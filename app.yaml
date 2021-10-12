@@ -1,4 +1,9 @@
 runtime: python38
+runtime_config:
+  python_version: 3
+
+entrypoint: gunicorn -b :$PORT main:app
+
 env_variables:
   CLOUD_SQL_USERNAME: playuser
   CLOUD_SQL_DATABASE_NAME: playlist
