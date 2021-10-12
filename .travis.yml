@@ -35,6 +35,11 @@ before_install:
 script:
   - python -m unittest -v test
 
+before_deploy:
+  - echo $CLOUD_SQL_PASSWORD >> app.yaml
+  - echo $CLOUD_SQL_CONNECTION_NAME >> app.yaml
+  - cat app.yaml
+
 deploy:
   - provider: gae
     keyfile: "../gcpkey.json"
