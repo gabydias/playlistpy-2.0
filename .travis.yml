@@ -32,13 +32,21 @@ before_install:
 script:
   - python -m unittest -v test
 
-before_deploy: "bash ./setup/gae.sh"
+#before_deploy: "bash ./setup/gae.sh"
 
+# Definir o Deploy no Heroku
 deploy:
-  - provider: gae
-    keyfile: "../gcpkey.json"
-    project: playlistpy-code
-    skip_cleanup: true
-    on:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  edge: true 
+  app: playlist-2
+  on:
       branch: main
+
+# - provider: gae
+#   keyfile: "../gcpkey.json"
+#   project: playlistpy-code
+#   skip_cleanup: true
+#   on:
+#     branch: main
 
