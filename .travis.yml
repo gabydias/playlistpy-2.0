@@ -27,7 +27,7 @@ env:
 before_install:
   - sudo mysql -e "CREATE USER 'playuser'@'%' IDENTIFIED BY '123456';"
   - sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'playuser'@'%' WITH GRANT OPTION;"
-  - sudo mysql -u playuser -p < setup/Playlist.sql
+  - sudo mysql -u playuser -p123456 < setup/Playlist.sql
     
 # Defini o script de Teste que deve rodar toda vez que o código for alterado.
 script:
