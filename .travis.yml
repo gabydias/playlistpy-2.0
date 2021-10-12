@@ -44,6 +44,7 @@ deploy:
   - provider: gae
     keyfile: "../gcpkey.json"
     project: playlistpy-code
+    skip_cleanup: true
     on:
       branch: main
 
