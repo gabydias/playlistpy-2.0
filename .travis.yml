@@ -35,10 +35,7 @@ before_install:
 script:
   - python -m unittest -v test
 
-before_deploy:
-  - echo -e "  CLOUD_SQL_PASSWORD: $CLOUD_SQL_PASSWORD" >> app.yaml
-  - echo -e "  CLOUD_SQL_CONNECTION_NAME: $CLOUD_SQL_CONNECTION_NAME" >> app.yaml
-  - cat app.yaml
+before_deploy: "bash ./setup/gae.sh"
 
 deploy:
   - provider: gae
