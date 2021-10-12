@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from main import app
+from app import app
 import os
 import unittest
 import mysql.connector
