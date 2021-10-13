@@ -36,11 +36,11 @@ before_deploy: "bash ./setup/gae.sh"
 
 # Definir o Deploy no Heroku
 deploy:
-  provider: heroku
-  api_key: $HEROKU_API_KEY
-  edge: true 
-  app: playlist-2
-  on:
+  - provider: heroku
+    api_key: $HEROKU_API_KEY
+    edge: true 
+    app: playlist-2
+    on:
       branch: main
 
   - provider: gae
