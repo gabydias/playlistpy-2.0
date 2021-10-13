@@ -32,7 +32,7 @@ script:
   - pytest -v test.py
   - pytest -v test_db.py
 
-before_deploy: "bash ./setup/gae.sh"
+before_deploy: "bash ./deploy/gae.sh"
 
 # Definir o Deploy no Heroku
 deploy:
