@@ -26,10 +26,10 @@ def open_connection():
     return conn
 
 def conv_func(list_data):
-    dic ={ "SONG_ID":list_data[0],
-          "SONG_NAME":list_data[1],
-          "SONG_ARTIST":list_data[2],
-          "SONG_GENRE": list_data[3]
+    dic ={ "id":list_data[0],
+          "name":list_data[1],
+          "artist":list_data[2],
+          "genre": list_data[3]
           }
     return dic
 

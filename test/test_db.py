@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
-from app import app
+import os
+import sys
+import unittest
 import pytest
 import pymysql 
+
+cur_dir = os.getcwd()
+sys.path.append(f'{cur_dir}/../app')
+
+from app import app
 
 # Setup of the place referred to in phpunit, teardown makes use of the fixture.
 @pytest.fixture(scope="module")

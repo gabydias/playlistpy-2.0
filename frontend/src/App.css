@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+.divTable {
+  display: table;
+  width: auto;
+  border: 1px solid #666666;
+  border-spacing: 5px; /* cellspacing:poor IE support for  this */
+}
+.headRow {
+  display: table-row;
+  width: auto;
+  clear: both;
+}
+.divCell {
+  float: left; /* fix for  buggy browsers */
+  width: 100px;
+  display: table-column;
+  border-bottom: 1px solid  #cfc7c7;
+}
+
+.divCellName {
+  width: 500px;
+}
