@@ -25,13 +25,26 @@ def open_connection():
 
     return conn
 
+def conv_func(list_data):
+    dic ={ "SONG_ID":list_data[0],
+          "SONG_NAME":list_data[1],
+          "SONG_ARTIST":list_data[2],
+          "SONG_GENRE": list_data[3]
+          }
+    return dic
+
 def get_songs():
     conn = open_connection()
     with conn.cursor() as cursor:
         result = cursor.execute('SELECT * FROM songs;')
         songs = cursor.fetchall()
         if result > 0:
-            got_songs = jsonify(songs)
+           new_data=[]
+           for i in songs:
+             new_data.append(conv_func(i))
+
+           got_songs = jsonify(new_data)
+
         else:
             got_songs = 'Nenhuma Musica Cadastrada na Playlist'
     conn.close()
