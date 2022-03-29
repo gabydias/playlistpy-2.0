@@ -10,7 +10,7 @@ db_connection_name = os.environ.get('CLOUD_SQL_CONNECTION_NAME')
 
 def open_connection():
     try:
-        if os.environ.get('GAE_ENV') == 'standard':
+        if db_connection_name:
             unix_socket = '/cloudsql/{}'.format(db_connection_name)
             conn = pymysql.connect(user=db_user, password=db_password,
                                 unix_socket=unix_socket, db=db_name,
@@ -18,20 +18,12 @@ def open_connection():
                                 )
         else:
             conn = pymysql.connect(user=db_user, password=db_password,
-                                host=db_local_host, db=db_name)
+                                host=db_local_host, db=db_name,cursorclass=pymysql.cursors.DictCursor)
 
     except pymysql.MySQLError as e:
         print(e)
 
     return conn
-
-def conv_func(list_data):
-    dic ={ "id":list_data[0],
-          "name":list_data[1],
-          "artist":list_data[2],
-          "genre": list_data[3]
-          }
-    return dic
 
 def get_songs():
     conn = open_connection()
@@ -39,14 +31,11 @@ def get_songs():
         result = cursor.execute('SELECT * FROM songs;')
         songs = cursor.fetchall()
         if result > 0:
-           new_data=[]
-           for i in songs:
-             new_data.append(conv_func(i))
-
-           got_songs = jsonify(new_data)
+           got_songs = jsonify(songs)
 
         else:
             got_songs = 'Nenhuma Musica Cadastrada na Playlist'
+
     conn.close()
 
     return got_songs
