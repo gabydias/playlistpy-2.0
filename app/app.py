@@ -4,9 +4,13 @@ from db import get_songs
 import os 
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
+#cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/')
+def home():
+    return jsonify({"status": "running", "service": "playlist-backend"})
+
+@app.route('/api')
 def songs():
     return get_songs()    
 
